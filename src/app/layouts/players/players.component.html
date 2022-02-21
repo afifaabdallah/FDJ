@@ -1,0 +1,41 @@
+<div mat-dialog-title fxLayoutAlign="space-between center">
+    <mat-dialog-content>
+        <div fxLayout="row">
+            <button type="button" mat-icon-button (click)="onClose()">
+                <mat-icon>keyboard_backspace</mat-icon>
+            </button>
+            {{ team }}
+
+        </div>
+        <ng-container *ngIf="players.length > 0 ; else noItems">
+
+
+
+            <div fxLayout="row" fxLayoutGap="10" *ngFor="let player of players;">
+
+                <div fxFlex="40%">
+                    <mat-card class="mat-elevation-z4 ">
+                        <img mat-card-image src="{{player.strThumb}}">
+                    </mat-card>
+                </div>
+                <div fxFlex="60%">
+                    <h3> {{player.strPlayer}} </h3>
+                    <div class="mt-4  text-secondary">
+                        <p>
+                        <p> {{player.strSport}} </p>
+                        <p> BirthDate:{{player.dateBorn}} </p>
+                        <p>Price:{{player.strSigning}} </p>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+
+
+        <!-- No items template -->
+        <ng-template #noItems>
+            <div class="mt-4  text-secondary">There are no items!</div>
+
+        </ng-template>
+    </mat-dialog-content>
+</div>
